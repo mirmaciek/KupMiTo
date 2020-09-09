@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.mainlist_item.view.*
 
 class MainListAdapter(private val list: List<MainListItem>) : RecyclerView.Adapter<MainListViewHolder>() {
     private val TAG: String? = "LOG MAINLISTADAPTER"
-    private val listener: OnItemClickListener
+    //private val listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.mainlist_item, parent, false)
@@ -37,7 +37,7 @@ class MainListAdapter(private val list: List<MainListItem>) : RecyclerView.Adapt
             itemView.setOnClickListener(this)
         }
         override fun onClick(v: View?){
-            listener.onItemClick()
+            //listener.onItemClick()
 
         }
     }
