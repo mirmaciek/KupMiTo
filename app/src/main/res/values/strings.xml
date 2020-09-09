@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">KupMiTo</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="log_into_app">Log into app:</string>
+    <string name="welcome_message">Hello, please log in:</string>
+    <string name="welcome_message_logged">Hello, %1$s! </string>
+    <string name="list_name">List name</string>
+    <string name="list_desc">List description</string>
+    <string name="list_add">Add new list</string>
+</resources>

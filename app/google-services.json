@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "273479523282",
+    "firebase_url": "https://kupmito-5a6c1.firebaseio.com",
+    "project_id": "kupmito-5a6c1",
+    "storage_bucket": "kupmito-5a6c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273479523282:android:1f35e8980227d6160d060b",
+        "android_client_info": {
+          "package_name": "com.mirkiewicz.kupmito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273479523282-bskmpu4i68qtut46dhnbf2kd1qi0asrn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mirkiewicz.kupmito",
+            "certificate_hash": "69d669b1d647da029d07dd917014de10e11d1eba"
+          }
+        },
+        {
+          "client_id": "273479523282-667fotp04iq25os7f6hvfgu6m4086dbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGhMAMvLQ4itAv7hFFE47Dy_8rzMvFgcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273479523282-667fotp04iq25os7f6hvfgu6m4086dbt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
