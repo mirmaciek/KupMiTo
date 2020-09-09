@@ -3,8 +3,6 @@ package com.mirkiewicz.kupmito
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -14,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener {
+class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, MainListAdapter.OnItemClickListener {
 
     private val mGoogleSignInClient: GoogleSignInClient? = null
     private val RC_SIGN_IN = 123
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener {
     private var isLogged: Boolean? = false
     private var TAG: String? = "Log: MAIN"
     private val mainList = ArrayList<MainListItem>()
-    private val adapter = MainListAdapter(mainList)
+    private val adapter = MainListAdapter(mainList, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,4 +79,8 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener {
 
     }
 
+    override fun onItemClick(position: Int) {
+        val intent = Intent(this, ProductsActivity::class.java)
+        startActivity(intent)
+    }
 }

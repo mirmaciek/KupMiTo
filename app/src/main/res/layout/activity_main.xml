@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:layout_margin="8dp">
+    >
 
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="4dp">
+        android:layout_height="match_parent">
 
 
         <TextView
@@ -21,7 +20,8 @@
             android:layout_gravity="top"
             android:layout_alignParentStart="true"
             android:textSize="25sp"
-            android:textColor="@color/colorPrimary">
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="8dp">
 
         </TextView>
         <Button
@@ -31,13 +31,13 @@
             android:layout_gravity="end"
             android:layout_alignParentEnd="true"
             android:text="@string/login"
+            android:layout_margin="8dp"
             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/fab_addlist"
             android:layout_below="@id/login_button"
             android:clipToPadding="false"
             tools:listitem="@layout/mainlist_item"/>

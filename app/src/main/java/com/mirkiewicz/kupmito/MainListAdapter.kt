@@ -1,18 +1,15 @@
 package com.mirkiewicz.kupmito
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mirkiewicz.kupmito.MainListAdapter.MainListViewHolder
 import kotlinx.android.synthetic.main.mainlist_item.view.*
 
-class MainListAdapter(private val list: List<MainListItem>) : RecyclerView.Adapter<MainListViewHolder>() {
+class MainListAdapter(private val list: List<MainListItem>, private val listener: OnItemClickListener) : RecyclerView.Adapter<MainListViewHolder>() {
     private val TAG: String? = "LOG MAINLISTADAPTER"
-    //private val listener: OnItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.mainlist_item, parent, false)
@@ -30,19 +27,23 @@ class MainListAdapter(private val list: List<MainListItem>) : RecyclerView.Adapt
         return list.size
     }
 
-    class MainListViewHolder(mainlistView: View) : RecyclerView.ViewHolder(mainlistView), View.OnClickListener {
+    inner class MainListViewHolder(mainlistView: View) : RecyclerView.ViewHolder(mainlistView), View.OnClickListener {
         val textviewTitle : TextView = itemView.titleText
         val textviewDesc : TextView = itemView.descriptionText
         init {
             itemView.setOnClickListener(this)
         }
         override fun onClick(v: View?){
-            //listener.onItemClick()
-
+            val position = adapterPosition
+            if(position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
         }
+
     }
 
     interface OnItemClickListener {
-        fun OnItemClick()
+        fun onItemClick(position: Int)
+//        fun onLongItemClick(position: Int)
     }
 }
