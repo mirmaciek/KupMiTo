@@ -39,11 +39,9 @@ class MainListAdapter(private val list: List<MainListItem>, private val listener
                 listener.onItemClick(position)
             }
         }
-
     }
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
-//        fun onLongItemClick(position: Int)
     }
 }
