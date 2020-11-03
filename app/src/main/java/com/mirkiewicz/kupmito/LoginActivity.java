@@ -73,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
     private void createRequest() {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
 //                TBD CZEMU NIE DZIALA DEFAULT?????????
-                .requestIdToken("273479523282-667fotp04iq25os7f6hvfgu6m4086dbt.apps.googleusercontent.com")
+//                .requestIdToken("273479523282-667fotp04iq25os7f6hvfgu6m4086dbt.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 

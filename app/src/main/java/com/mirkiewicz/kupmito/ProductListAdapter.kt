@@ -1,13 +1,18 @@
 package com.mirkiewicz.kupmito
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.productlist_item.view.*
 
-class ProductListAdapter(private val list: List<ProductListItem>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {
+class ProductListAdapter(private val list: List<ProductListItem>) : RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.productlist_item, parent, false)
@@ -23,24 +28,10 @@ class ProductListAdapter(private val list: List<ProductListItem>, private val li
         return list.size
     }
 
-    inner class ProductListViewHolder(productlistView: View) : RecyclerView.ViewHolder(productlistView), View.OnClickListener {
+
+    inner class ProductListViewHolder(productlistView: View) : RecyclerView.ViewHolder(productlistView) {
         val product: TextView = itemView.productText
-        init {
-            itemView.setOnClickListener(this)
-        }
 
-        override fun onClick(p0: View?) {
-            val position = adapterPosition
-            if(position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
-            }
-        }
-
-    }
-
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
     }
 
 }

@@ -11,4 +11,10 @@
     <string name="list_desc">List description</string>
     <string name="list_add">Add new list</string>
     <string name="add">Add</string>
+    <string name="not_logged">Please log in first</string>
+    <string name="empty_field">The "%1$s" field cannot be empty or contain illegal characters</string>
+    <string name="share">Share</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
 </resources>
