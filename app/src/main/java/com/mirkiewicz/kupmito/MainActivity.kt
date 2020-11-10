@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, M
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        readData()
-
 
         login_button.setOnClickListener {
 
@@ -71,7 +69,7 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, M
         recyclerview_main.adapter = adapter
         recyclerview_main.layoutManager = LinearLayoutManager(this)
         recyclerview_main.setHasFixedSize(true)
-
+        readData()
     }
 
     override fun onResume() {
@@ -85,21 +83,20 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, M
 //            val id = String().toInt(signInAccount.id)
 
             text_welcome.text = getString(R.string.welcome_message_logged, username)
+//            readData()
         }else{
+            clearLocalData()
             login_button.text = Editable.Factory.getInstance().newEditable(getString(R.string.login))
             text_welcome.text = getString(R.string.welcome_message)
         }
 
-        readData()
-
     }
     private fun readData() {
 
+        Toast.makeText(this, "zczytywanko", Toast.LENGTH_SHORT).show()
         db_ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                groupsList.clear()
-                mainList.clear()
-                adapter.notifyDataSetChanged()
+                clearLocalData()
 
                 for (groupnames in snapshot.children) { // k - nazwa grupy
 
@@ -129,7 +126,7 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, M
             val item = MainListItem(name, description)
             db_ref.push().setValue(item)
         }
-        readData()
+//        readData()
 
     }
 
@@ -162,6 +159,13 @@ class MainActivity : AppCompatActivity(), AddListDialog.AddListDialogListener, M
             else -> return super.onContextItemSelected(item)
         }
         return super.onContextItemSelected(item)
+    }
+
+    fun clearLocalData(){
+
+        groupsList.clear()
+        mainList.clear()
+        adapter.notifyDataSetChanged()
     }
 
     override fun onItemClick(position: Int) {

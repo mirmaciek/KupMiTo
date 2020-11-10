@@ -31,7 +31,10 @@
             android:layout_gravity="end"
             android:layout_alignParentEnd="true"
             android:text="@string/login"
-            android:layout_margin="8dp"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            style="@style/Widget.MaterialComponents.Button"
+
             />
 
         <androidx.recyclerview.widget.RecyclerView
