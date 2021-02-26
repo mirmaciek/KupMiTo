@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialogFragment
 
-class AddListDialog(val listid: String?) : AppCompatDialogFragment() {
+class AddListDialog : AppCompatDialogFragment() {
 
     private var et_listname: EditText? = null
     private var et_listdesc: EditText? = null
@@ -18,7 +18,7 @@ class AddListDialog(val listid: String?) : AppCompatDialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val builder = AlertDialog.Builder(activity)
-        val inflater = activity!!.layoutInflater
+        val inflater = requireActivity().layoutInflater
         val view = inflater.inflate(R.layout.addlist_dialog, null)
 
         et_listname = view.findViewById(R.id.edit_listname)
@@ -28,9 +28,9 @@ class AddListDialog(val listid: String?) : AppCompatDialogFragment() {
                 .setNegativeButton(getString(R.string.cancel)) { dialogInterface, i -> }
                 .setPositiveButton(getString(R.string.save)) { dialogInterface, i ->
 
-                    val filtered = ".[]#$"
+//                    val filtered = ".[]#$"
                     var name = et_listname!!.text.toString().trim()
-                    name = name.filterNot { filtered.indexOf(it) > -1 }
+//                    name = name.filterNot { filtered.indexOf(it) > -1 }
 
                     var description = et_listdesc!!.text.toString().trim()
 
@@ -40,10 +40,7 @@ class AddListDialog(val listid: String?) : AppCompatDialogFragment() {
                         name = name.substring(0,100)
 
                     if (name != "") {
-                        if (listid != null) {
-                            listener!!.applyTexts(name, description, listid)
-                        }else
-                            listener!!.applyTexts(name, description, null)
+                        listener!!.applyTexts(name, description)
                     } else {
                         val text = getString(R.string.empty_field, "name")
                         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
@@ -64,7 +61,7 @@ class AddListDialog(val listid: String?) : AppCompatDialogFragment() {
     }
 
     interface AddListDialogListener {
-        fun applyTexts(name: String, description: String, id: String?)
+        fun applyTexts(name: String, description: String)
     }
 }
 

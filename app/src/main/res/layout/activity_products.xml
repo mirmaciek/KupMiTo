@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductsActivity"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    tools:context=".ProductsActivity">
 
     <RelativeLayout
 
@@ -15,42 +15,38 @@
         <EditText
             android:id="@+id/addprod_edittext"
 
-            android:layout_toLeftOf="@id/addproduct_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-
+            android:layout_toLeftOf="@id/addproduct_button"
+            android:hint="@string/enter_product"
             android:imeOptions="actionSend"
+            android:importantForAutofill="no"
             android:inputType="textAutoCorrect"
-            android:lines="1"
-            android:importantForAutofill="no" />
+            android:lines="1" />
 
         <Button
             android:id="@+id/addproduct_button"
 
-            android:layout_alignParentRight="true"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            style="@style/Widget.MaterialComponents.Button"
+            android:layout_alignParentRight="true"
             android:drawableStart="@drawable/ic_baseline_add_24"
             android:text="@string/add"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_products"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/addproduct_button"
             android:clipToPadding="false"
-
             tools:listitem="@layout/productlist_item" />
 
     </RelativeLayout>
-
-
-
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

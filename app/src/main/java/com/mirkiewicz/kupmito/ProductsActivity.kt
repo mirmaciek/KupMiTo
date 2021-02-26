@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase.getInstance
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_products.*
-import kotlin.coroutines.coroutineContext
 
 
 class ProductsActivity : AppCompatActivity() {
@@ -68,8 +66,8 @@ class ProductsActivity : AppCompatActivity() {
                         val itemtodelete = productList[position].key
                         dbRef?.child(itemtodelete)?.removeValue()
                         val deleteditemname = productList[position].product
-                        Snackbar.make(findViewById(android.R.id.content), "$deleteditemname removed", Snackbar.LENGTH_LONG)
-                                .setAction("UNDO", SnackbarUndoListener(deleteditemname)).show()
+                        Snackbar.make(findViewById(android.R.id.content), getString(R.string.product_removed, deleteditemname), Snackbar.LENGTH_LONG)
+                                .setAction(getText(R.string.undo), SnackbarUndoListener(deleteditemname)).show()
                     }
                 })
         ith.attachToRecyclerView(recyclerview_products)
@@ -78,7 +76,7 @@ class ProductsActivity : AppCompatActivity() {
     private fun addProduct(newproduct: String) {
 
         addprod_edittext.text.clear()
-        if(!newproduct.equals("")) {
+        if (newproduct != "") {
             dbRef!!.push().setValue(newproduct)
             readData()
         }
@@ -89,12 +87,11 @@ class ProductsActivity : AppCompatActivity() {
         dbRef?.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-
                 productList.clear()
                 adapter.notifyDataSetChanged()
 
                 for (tmp in dataSnapshot.children) {
-                    productList += ProductListItem(tmp.key.toString(),tmp.value.toString())
+                    productList += ProductListItem(tmp.key.toString(), tmp.value.toString())
                     adapter.notifyItemInserted(productList.lastIndex)
                 }
             }
@@ -104,13 +101,13 @@ class ProductsActivity : AppCompatActivity() {
             }
         })
     }
-    inner class SnackbarUndoListener(var item : String) : View.OnClickListener {
+
+    inner class SnackbarUndoListener(var item: String) : View.OnClickListener {
 
         override fun onClick(v: View) {
             addProduct(item)
         }
     }
-
 
 
 }

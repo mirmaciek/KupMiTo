@@ -1,6 +1,9 @@
 package com.mirkiewicz.kupmito
 
-import android.view.*
+import android.view.ContextMenu
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mirkiewicz.kupmito.MainListAdapter.MainListViewHolder
@@ -27,15 +30,17 @@ class MainListAdapter(private val list: List<MainListItem>, private val clickLis
     }
 
     inner class MainListViewHolder(mainlistView: View) : RecyclerView.ViewHolder(mainlistView), View.OnClickListener, View.OnCreateContextMenuListener {
-        val textviewTitle : TextView = itemView.titleText
-        val textviewDesc : TextView = itemView.descriptionText
+        val textviewTitle: TextView = itemView.titleText
+        val textviewDesc: TextView = itemView.descriptionText
+
         init {
             itemView.setOnClickListener(this)
             itemView.setOnCreateContextMenuListener(this)
         }
-        override fun onClick(v: View?){
+
+        override fun onClick(v: View?) {
             val position = adapterPosition
-            if(position != RecyclerView.NO_POSITION) {
+            if (position != RecyclerView.NO_POSITION) {
                 clickListener.onItemClick(position)
             }
         }
@@ -44,10 +49,10 @@ class MainListAdapter(private val list: List<MainListItem>, private val clickLis
 
             val position = adapterPosition
 
-            if(position != RecyclerView.NO_POSITION) {
-                menu?.add(0, R.id.share_option, position, R.string.share )
-                menu?.add(0, R.id.edit_option, position, R.string.edit )
-                menu?.add(0, R.id.delete_option, position, R.string.delete )
+            if (position != RecyclerView.NO_POSITION) {
+                menu?.add(0, R.id.share_option, position, R.string.share)
+                menu?.add(0, R.id.edit_option, position, R.string.edit)
+                menu?.add(0, R.id.delete_option, position, R.string.delete)
             }
 
         }
@@ -56,6 +61,7 @@ class MainListAdapter(private val list: List<MainListItem>, private val clickLis
     interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
+
     interface OnCreateContextMenuListener {
         fun onContextMenuClick(menu: ContextMenu?, view: View?, menuInfo: ContextMenu.ContextMenuInfo?)
     }
